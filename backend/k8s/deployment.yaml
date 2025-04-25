@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: poc-backend-deployment
+  labels:
+    app: poc-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: poc-backend
+  template:
+    metadata:
+      labels:
+        app: poc-backend
+    spec:
+      containers:
+      - name: poc-backend
+        image: poc/backend
+        imagePullPolicy: Never # Will try to pull from web if not set to 'Never'
+        ports:
+          - containerPort: 8080 # Port to expose in the container (must match below port)
+        env:
+          - name: SERVER_PORT
+            value: "8080" # Default for Spring Boot is 8080, but you can change this if you want another

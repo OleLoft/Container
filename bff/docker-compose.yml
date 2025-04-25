@@ -1,0 +1,20 @@
+version: "3"
+
+services:
+    pocbackend:
+        image: poc-image-frontend
+        restart: always
+        container_name: pocbff
+        ports:
+            - 8081:8081
+        environment:
+            - SERVICE_ENDPOINT=${BFF_IP_ADDRESS}:8082
+            - APP_IS_BFF=false
+        networks:
+            - pocNet   
+
+
+# Definition of network
+networks:
+    pocNet:
+        driver: bridge              
