@@ -2,9 +2,9 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 resources:
-- ingress.yaml
-- serviceaccount-admin.yaml
-- serviceaccount-secret.yaml
+- kubernetesDashboard/ingress.yaml
+- kubernetesDashboard/serviceaccount-admin.yaml
+- kubernetesDashboard/serviceaccount-secret.yaml
 - https://raw.githubusercontent.com/kubernetes/dashboard/master/aio/deploy/recommended.yaml
 
 namespace: kubernetes-dashboard
